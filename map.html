@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Google Map with GeoJSON</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXMSdfAeC1K7UN_YMb1A4Rv8a_xIA7b2w"></script>
+    <style>
+      /* Set the size of the map */
+      #map {
+        height: 500px; /* Set the height of the map */
+        width: 100%;   /* Set the width of the map */
+      }
+    </style>
+  </head>
+  <body>
+    <h3>My Map with GeoJSON Data</h3>
+    <div id="map"></div>
+
+    <script>
+      // Initialize and add the map
+      function initMap() {
+        // The map, centered at a specific location
+        var map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 5, // Set the default zoom level
+          center: { lat: 0, lng: 0 }, // Set the default center (change this to your preferred location)
+        });
+
+        // Load GeoJSON data onto the map
+        map.data.loadGeoJson('https://www.ogd.stadt-zuerich.ch/wfs/geoportal/Kunst_im_Stadtraum?service=WFS&version=1.1.0&request=GetFeature&outputFormat=GeoJSON&typename=view_kioer');
+      }
+
+      // Load the map when the window finishes loading
+      window.onload = initMap;
+    </script>
+  </body>
+</html>
